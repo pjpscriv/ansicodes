@@ -3,12 +3,14 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>ANSI code generator</title>
+    <title>ANSI Code Generator</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='colors.css'>
     <script src='main.js'></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZXP6V3DB2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,23 +19,22 @@
 
       gtag('config', 'G-LZXP6V3DB2');
     </script>
+    -->
 </head>
 <body>
-    <div>
-        <p style="padding: 10px; background-color: grey; text-align: center;">Working in finance? We are looking for <a href="https://quillai.com">beta testers for our new product, Quill AI!</a></p>
-        
-        <div class="head">
-            <div>
-                <a href="index.html">home</a>
-                <a href="help.html">help</a>
-                <a target="_blank" rel="noopener noreferrer" href="https://gabebanks.net/donate.html">donate</a>
-            </div>
-            <a href="https://gabebanks.net">gabebanks.net</a>
+    <div class="head">
+        <div>
+            <a href="index.html">home</a>
         </div>
+        <a href="help.html">help</a>
+        <!-- <a target="_blank" rel="noopener noreferrer" href="https://gabebanks.net/donate.html">donate</a> -->
     </div>
     <div class="main">
-        <h1>ANSI escape code generator</h1>
+        <h1>ANSI Escape Code Generator</h1>
         <div class="menu">
+            <div class="submenu">
+                <input type="text" id="input" placeholder="input text (optional)">
+            </div>
             <div class="submenu">
                 <button class="reset-btn">Reset</button>
             </div>
@@ -75,8 +76,12 @@
                 <button class="escape-btn">\e</button>
             </div>
         </div>
+        <div id="preview" class="menu">
+            <p>Preview:</p>
+            <div id="preview-text"></div>
+        </div>
         <div class="menu">
-            <input onclick="this.select();" type="text" id="output" readonly placeholder="output here" >
+            <input id="output" type="text" onclick="this.select();" readonly placeholder="output here" >
             <button id="copy">copy</button>
         </div>
     </div>

@@ -36,12 +36,20 @@ window.onload = () => {
         "Strikethrough": 9,
     }
 
+    // Get input text box
+    const input_box = document.getElementById("input")
+
     // Get groups of buttons
     const all_btns = document.querySelectorAll("button")
     const fgcolor_btns = document.querySelectorAll(".fgcolor-btn")
     const bgcolor_btns = document.querySelectorAll(".bgcolor-btn")
     const style_btns = document.querySelectorAll(".style-btn")
     const escape_btns = document.querySelectorAll(".escape-btn")
+
+    // Get output elements
+    const preview = document.getElementById("preview")
+    const preview_text = document.getElementById("preview-text")
+    const output_box = document.getElementById("output")
 
     // Default settings
     let settings = {
@@ -50,6 +58,7 @@ window.onload = () => {
         style: [],
         reset: false,
         escape: "\\x1b",
+        text: ""
     }
 
     // Functions to handle button clicks
@@ -93,15 +102,20 @@ window.onload = () => {
         settings.escape = e.innerHTML
         updateOutput()
     }
+    let chngText = (e) => {
+        const sanitizedText = e.value.replace(/[^a-zA-Z0-9 ]/g, '')
+        settings.text = sanitizedText
+        updateOutput()
+    }
 
     // Update the screen each time the button is clicked
     let updateOutput = () => {
-
+        
         // Reset the button's color to all be inactive
         all_btns.forEach(x => {
             x.style.backgroundColor = "#777777"
         })
-
+        
         // Reset settings back to default
         if (settings.reset) {
             settings = {
@@ -110,8 +124,12 @@ window.onload = () => {
                 style: [],
                 reset: true,
                 escape: settings.escape,
+                text: ""
             }
         }
+
+        // Ensure input text matches settings
+        input_box.value = settings.text
 
         // Go through each setting and add the corresponding ANSI code
         let output = ""
@@ -148,18 +166,34 @@ window.onload = () => {
         // If it is a reset command, show the reset code
         if (settings.reset) {
             document.getElementsByClassName("reset-btn")[0].style.backgroundColor = "#507f9b"
-            document.getElementById('output').value = settings.escape + "[0m"
+            output_box.value = settings.escape + "[0m"
         }
         // If nothing is selected, reset the output box
         else if (output === "") {
             document.getElementsByClassName("reset-btn")[0].style.backgroundColor = "#777777"
-            document.getElementById('output').value = ""
+            output_box.value = ""
         }
         // Otherwise, proceed as normal.
         else {
             document.getElementsByClassName("reset-btn")[0].style.backgroundColor = "#777777"
             // Construct the resulting escape sequence + ANSI codes
-            document.getElementById('output').value = settings.escape + "[" + output.slice(0, -1) + "m"
+            output_box.value = settings.escape + "[" + output.slice(0, -1) + "m"
+        }
+
+        // Update preview text
+        preview_text.innerText = !!settings.text ? settings.text : "preview text"
+        const classes = [ settings.fgcolor+"-fg", settings.bgcolor+"-bg", ...settings.style ]
+            .filter(x => x !== "-fg" && x !== "-bg" && x !== "")
+            .map(x => `code-${codes[x]}`)
+            .join(" ")
+        preview_text.className = classes
+
+        // Add the text to the output box
+        if (settings.text) {
+            output_box.value += settings.text
+
+            // Add reset code
+            output_box.value += settings.escape + "[0m"
         }
     }
 
@@ -176,6 +210,9 @@ window.onload = () => {
     escape_btns.forEach(x => {
         x.onclick = () => {selEscape(x)}
     })
+
+    // Apply handler function to the text box
+    input_box.oninput = () => {chngText(input_box)}
 
     document.getElementsByClassName("reset-btn")[0].onclick = () => {selReset()}
     updateOutput()

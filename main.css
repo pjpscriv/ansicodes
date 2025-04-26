@@ -1,4 +1,4 @@
-@font-face { font-family: FiraCode; src: url('FiraCode.ttf'); }
+@font-face { font-family: FiraCode; src: url('res/FiraCode.ttf'); }
 
 * {
     margin: 0;
@@ -38,9 +38,10 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    max-width: 1024px;
 }
 
-#output {
+input[type="text"] {
     font-family: inherit;
     background: none;
     border: none;
@@ -89,4 +90,14 @@ button {
 
 .helpbox {
     max-width: 800px;
+}
+
+#preview p {
+    margin-bottom: 8px;
+    color: #999999;
+}
+
+#preview-text {
+    font-size: 1.25rem;
+    white-space: pre-wrap;
 }
