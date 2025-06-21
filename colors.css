@@ -17,6 +17,7 @@
 .code-47 { background: #ffffff; }
 
 .code-1 { font-weight: bold; }
+.code-2 { opacity: 0.5; }
 .code-3 { font-style: italic; }
 .code-4 { text-decoration: underline; }
 .code-9 { text-decoration: line-through; }

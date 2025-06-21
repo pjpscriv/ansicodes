@@ -31,6 +31,7 @@ window.onload = () => {
         "Default-bg": 49,        
 
         "Bold": 1,
+        "Faint": 2,
         "Italic": 3,
         "Underline": 4,
         "Strikethrough": 9,
