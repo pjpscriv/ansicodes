@@ -1,4 +1,4 @@
-@font-face { font-family: FiraCode; src: url('res/FiraCode.ttf'); }
+@font-face { font-family: FiraCode; src: url('../res/FiraCode.ttf'); }
 
 * {
     margin: 0;
@@ -88,12 +88,30 @@ button {
     margin: 5px 5px;
 }
 
+.submenu--bordered {
+    border: 1px dashed #444;
+    border-radius: 8px;
+    width: calc(100% - 32px);
+    padding: 8px 0;
+    position: relative;
+}
+
+.submenu__title {
+    position: absolute;
+    top: -14px;
+    left: 8px;
+    background-color: #262626;
+    font-size: 12px;
+    color: #aaa;
+    padding: 0 4px;
+}
+
 .helpbox {
     max-width: 800px;
 }
 
 #preview p {
-    margin-bottom: 8px;
+    margin: 4px;
     color: #999999;
 }
 

@@ -5,9 +5,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ANSI Code Generator</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='colors.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/colors.css'>
+    <script src='js/main.js'></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!--
@@ -38,8 +38,8 @@
             <div class="submenu">
                 <button class="reset-btn">Reset</button>
             </div>
-            <div class="submenu">
-                <p>Foreground Color:</p>
+            <div class="submenu submenu--bordered">
+                <p class="submenu__title">Foreground Color:</p>
                 <button class="fgcolor-btn">Default</button>
                 <button class="fgcolor-btn">Black</button>
                 <button class="fgcolor-btn">Red</button>
@@ -50,8 +50,8 @@
                 <button class="fgcolor-btn">Cyan</button>
                 <button class="fgcolor-btn">White</button>
             </div>
-            <div class="submenu">
-                <p>Background Color:</p>
+            <div class="submenu submenu--bordered">
+                <p class="submenu__title">Background Color:</p>
                 <button class="bgcolor-btn">Default</button>
                 <button class="bgcolor-btn">Black</button>
                 <button class="bgcolor-btn">Red</button>
@@ -62,23 +62,23 @@
                 <button class="bgcolor-btn">Cyan</button>
                 <button class="bgcolor-btn">White</button>
             </div>
-            <div class="submenu">
-                <p>Style:</p>
+            <div class="submenu submenu--bordered">
+                <p class="submenu__title">Style:</p>
                 <button class="style-btn">Bold</button>
                 <button class="style-btn">Faint</button>
                 <button class="style-btn">Italic</button>
                 <button class="style-btn">Underline</button>
                 <button class="style-btn">Strikethrough</button>
             </div>
-            <div class="submenu">
-                <p>Escape sequence:</p>
+            <div class="submenu submenu--bordered">
+                <p class="submenu__title">Escape sequence:</p>
                 <button class="escape-btn">\x1b</button>
                 <button class="escape-btn">\033</button>
                 <button class="escape-btn">\e</button>
             </div>
         </div>
-        <div id="preview" class="menu">
-            <p>Preview:</p>
+        <div id="preview" class="menu submenu--bordered">
+            <p class="submenu__title">Preview:</p>
             <div id="preview-text"></div>
         </div>
         <div class="menu">
